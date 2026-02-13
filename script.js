@@ -316,6 +316,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Relationship Timer (Since 09/03/2016) ---
+    function initRelationshipTimer() {
+        // March is month index 2 (0=Jan, 1=Feb, 2=Mar)
+        const startDate = new Date(2016, 2, 9, 0, 0, 0);
+        const timerEl = document.getElementById('relationship-timer');
+        if (!timerEl) return;
+
+        function updateTimer() {
+            const now = new Date();
+
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            let hours = now.getHours() - startDate.getHours();
+            let minutes = now.getMinutes() - startDate.getMinutes();
+            let seconds = now.getSeconds() - startDate.getSeconds();
+
+            if (seconds < 0) { seconds += 60; minutes--; }
+            if (minutes < 0) { minutes += 60; hours--; }
+            if (hours < 0) { hours += 24; days--; }
+            if (days < 0) {
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+                months--;
+            }
+            if (months < 0) { months += 12; years--; }
+
+            timerEl.innerHTML = `
+                <div class="timer-unit"><span class="timer-val">${years}</span><span class="timer-label">Years</span></div>
+                <div class="timer-unit"><span class="timer-val">${months}</span><span class="timer-label">Months</span></div>
+                <div class="timer-unit"><span class="timer-val">${days}</span><span class="timer-label">Days</span></div>
+                <div class="timer-unit"><span class="timer-val">${hours}</span><span class="timer-label">Hrs</span></div>
+                <div class="timer-unit"><span class="timer-val">${minutes}</span><span class="timer-label">Mins</span></div>
+                <div class="timer-unit"><span class="timer-val">${seconds}</span><span class="timer-label">Secs</span></div>
+            `;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    }
+
     // --- Photo Slideshows (auto-rotate) ---
     function initPhotoSlideshows() {
         document.querySelectorAll('.photo-slideshow').forEach(slideshow => {
@@ -352,6 +393,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const overlay = document.getElementById('vtr-overlay');
         const closeBtn = document.getElementById('vtr-close');
         const rainContainer = document.getElementById('vtr-rain');
+
+        // --- Click Counter ---
+        const clickCountEl = document.getElementById('click-count');
+        let clicks = parseInt(localStorage.getItem('vtrClickCount') || '0');
+        if (clickCountEl) clickCountEl.textContent = clicks;
 
         if (!btn || !overlay) return;
 
@@ -453,6 +499,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         btn.addEventListener('click', () => {
+            // Increment Click Count
+            clicks++;
+            localStorage.setItem('vtrClickCount', clicks);
+            if (clickCountEl) clickCountEl.textContent = clicks;
             if (MEDIA_FILES.length === 0) {
                 alert('กรุณาเพิ่มชื่อไฟล์รูป/วิดีโอในตัวแปร MEDIA_FILES ใน script.js\nแล้ววางไฟล์ในโฟลเดอร์ media/');
                 return;
@@ -461,6 +511,10 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.classList.add('active');
             overlay.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            // Pause main background music
+            const mainMusic = document.getElementById('main-bg-music');
+            if (mainMusic) mainMusic.pause();
+
             bgMusic.currentTime = 0;
             bgMusic.play().catch(() => { });
             startTypewriter();
@@ -554,6 +608,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearInterval(fadeOut);
                     bgMusic.pause();
                     bgMusic.volume = 0.5;
+                    // Resume main background music
+                    const mainMusic = document.getElementById('main-bg-music');
+                    if (mainMusic) mainMusic.play().catch(() => { });
                 } else {
                     bgMusic.volume = vol;
                 }
@@ -587,7 +644,28 @@ document.addEventListener('DOMContentLoaded', () => {
         initFireworks();
         initScrollIndicator();
         initPetalHoverEffect();
+        initRelationshipTimer();
         initPhotoSlideshows();
         initVTRMediaRain();
+
+        // --- Splash Screen → Start Music Immediately ---
+        const splash = document.getElementById('splash-screen');
+        const enterBtn = document.getElementById('enter-btn');
+        const mainMusic = document.getElementById('main-bg-music');
+
+        if (enterBtn && splash && mainMusic) {
+            mainMusic.volume = 0.5;
+
+            enterBtn.addEventListener('click', () => {
+                // Play music immediately on user click (guaranteed by browser)
+                mainMusic.play();
+
+                // Fade out splash
+                splash.style.opacity = '0';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 800);
+            });
+        }
     }
 });

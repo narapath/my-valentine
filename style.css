@@ -418,7 +418,7 @@ body {
 
 .hero-subtitle {
     font-family: var(--font-serif);
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.8rem, 4vw, 3rem);
     font-style: italic;
     font-weight: 300;
     color: var(--rose-blush);
@@ -429,13 +429,46 @@ body {
 
 .hero-tagline {
     font-family: var(--font-serif);
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     color: var(--gold-light);
     margin-top: 1rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     opacity: 0;
     animation: fadeInUp 1s ease 2.2s forwards;
+}
+
+.relationship-timer {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--cream);
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 1s ease 2.6s forwards;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.timer-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-val {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.timer-label {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
 }
 
 @keyframes fadeInUp {

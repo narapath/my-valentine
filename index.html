@@ -16,6 +16,37 @@
 </head>
 
 <body>
+    <!-- Splash Screen: Click to Enter & Start Music -->
+    <div id="splash-screen" style="
+        position: fixed; inset: 0; z-index: 99999;
+        background: radial-gradient(ellipse at center, #2a0a1a 0%, #0d0208 100%);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        cursor: pointer; transition: opacity 0.8s ease;
+    ">
+        <div style="text-align: center; animation: fadeInUp 1s ease forwards;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">💕</div>
+            <p
+                style="font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 5vw, 3.5rem); color: #f4c2c2; margin: 0 0 0.5rem 0;">
+                Happy Valentine's Day
+            </p>
+            <p
+                style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.5rem); color: #d4a373; letter-spacing: 3px; margin: 0 0 2rem 0;">
+                JACK & BELL
+            </p>
+            <button id="enter-btn" style="
+                background: linear-gradient(135deg, #b76e79, #8b2252);
+                color: #fff; border: none; padding: 14px 40px;
+                font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;
+                letter-spacing: 2px; border-radius: 50px; cursor: pointer;
+                box-shadow: 0 0 30px rgba(183,110,121,0.5);
+                transition: transform 0.3s, box-shadow 0.3s;
+            " onmouseover="this.style.transform='scale(1.08)'; this.style.boxShadow='0 0 50px rgba(183,110,121,0.8)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 30px rgba(183,110,121,0.5)'">
+                🌹 Click Here 🌹
+            </button>
+        </div>
+    </div>
+
     <!-- Preloader -->
     <div id="preloader">
         <div class="preloader-heart">💕</div>
@@ -67,6 +98,9 @@
             </h1>
             <p class="hero-subtitle">Happy Valentine's Day</p>
             <p class="hero-tagline">Jack & Bell 💕</p>
+            <div id="relationship-timer" class="relationship-timer">
+                Loading our time together...
+            </div>
         </div>
 
         <div class="scroll-indicator" id="scroll-indicator">
@@ -194,6 +228,10 @@
                 <div class="btn-sparkle btn-sparkle-3">✦</div>
                 <div class="btn-sparkle btn-sparkle-4">✧</div>
             </button>
+            <p class="view-counter"
+                style="margin-top: 15px; font-size: 0.9rem; color: var(--rose-dust); opacity: 0.8; font-family: var(--font-serif); letter-spacing: 1px;">
+                มีคนกดเข้ามาดูแล้ว <span id="click-count" style="color: var(--gold); font-weight: bold;">0</span> ครั้ง
+            </p>
         </div>
     </section>
 
@@ -209,11 +247,8 @@
         <button id="vtr-close" class="vtr-close">✕</button>
     </div>
 
-    <!-- Background Music Toggle -->
-    <button id="music-toggle" class="music-btn" aria-label="Toggle music">
-        <span class="music-icon">🎵</span>
-    </button>
-
+    <!-- Background Music (Auto Play) -->
+    <audio id="main-bg-music" src="mp3/2.mp3" autoplay loop preload="auto"></audio>
     <script src="script.js"></script>
 </body>
 
