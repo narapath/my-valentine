@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day Jack & Bell💕</title>
+    <meta name="description"
+        content="A romantic Valentine's Day surprise filled with love, roses, and cherished memories.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-heart">💕</div>
+        <p class="preloader-text">Preparing something special for you...</p>
+    </div>
+
+    <!-- Floating Petals (Global) -->
+    <div id="petals-container" aria-hidden="true"></div>
+
+    <!-- Golden Dust Particles (Global) -->
+    <div id="particles-container" aria-hidden="true"></div>
+
+    <!-- ==================== SECTION 1: HERO ==================== -->
+    <section id="hero" class="section">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-roses-left" aria-hidden="true"></div>
+        <div class="hero-roses-right" aria-hidden="true"></div>
+
+        <!-- Glass Heart -->
+        <div class="glass-heart-wrapper">
+            <div class="glass-heart">
+                <div class="heart-glow"></div>
+                <svg viewBox="0 0 512 512" class="heart-svg">
+                    <defs>
+                        <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff3366;stop-opacity:0.8" />
+                            <stop offset="50%" style="stop-color:#ff1a4d;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#cc0033;stop-opacity:0.8" />
+                        </linearGradient>
+                        <filter id="glass-blur">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+                        </filter>
+                    </defs>
+                    <path
+                        d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+                        fill="url(#heartGrad)" class="heart-path" />
+                    <path
+                        d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+                        fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" class="heart-outline" />
+                </svg>
+                <div class="heart-shine"></div>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title" data-text="แด่... คนพิเศษ">
+                <span class="line line-1">รักนะ</span>
+                <span class="line line-2">คนพิเศษของฉัน</span>
+            </h1>
+            <p class="hero-subtitle">Happy Valentine's Day</p>
+            <p class="hero-tagline">Jack & Bell 💕</p>
+        </div>
+
+        <div class="scroll-indicator" id="scroll-indicator">
+            <span>เลื่อนลง</span>
+            <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 2: GALLERY ==================== -->
+    <section id="gallery" class="section">
+        <div class="gallery-bg"></div>
+        <div class="section-header">
+            <h2 class="section-title script-font">Snapshots of Love</h2>
+            <p class="section-subtitle">Timeless moments with my timeless love.</p>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Frame 1: Congratulations Slideshow -->
+            <div class="gallery-frame" data-parallax="0.05">
+                <div class="frame-border">
+                    <div class="frame-inner">
+                        <div class="photo-slideshow" id="congrats-slideshow">
+                            <img src="firstpic/congratulations/1.jpg" alt="Our photo" class="slide-img active">
+                            <img src="firstpic/congratulations/2.jpg" alt="Our photo" class="slide-img">
+                            <img src="firstpic/congratulations/555928132_31539927562319165_2268427878111564466_n.jpg"
+                                alt="Our photo" class="slide-img">
+                            <img src="firstpic/congratulations/557625933_31540303668948221_6737824287874603402_n.jpg"
+                                alt="Our photo" class="slide-img">
+                        </div>
+                    </div>
+                    <div class="frame-roses frame-roses-tl">🌹</div>
+                    <div class="frame-roses frame-roses-br">🌹</div>
+                </div>
+                <p class="frame-caption">"Congratulations on your Graduation!🎓"</p>
+            </div>
+
+            <!-- Frame 2: Together Forever -->
+            <div class="gallery-frame" data-parallax="-0.08">
+                <div class="frame-border">
+                    <div class="frame-inner">
+                        <div class="photo-slideshow">
+                            <img src="firstpic/2/1.png" alt="Our photo" class="slide-img active">
+                            <img src="firstpic/2/2.jpg" alt="Our photo" class="slide-img">
+                            <img src="firstpic/2/3.jpg" alt="Our photo" class="slide-img">
+                            <img src="firstpic/2/4.jpg" alt="Our photo" class="slide-img">
+                            <img src="firstpic/2/5.jpg" alt="Our photo" class="slide-img">
+                            <img src="firstpic/2/6.jpg" alt="Our photo" class="slide-img">
+                            <img src="firstpic/2/7.jpg" alt="Our photo" class="slide-img">
+                        </div>
+                    </div>
+                    <div class="frame-roses frame-roses-tl">🌹</div>
+                    <div class="frame-roses frame-roses-br">🌹</div>
+                </div>
+                <p class="frame-caption">"Together Forever 💑"</p>
+            </div>
+
+            <!-- Frame 3: Our Adventure -->
+            <div class="gallery-frame" data-parallax="0.06">
+                <div class="frame-border">
+                    <div class="frame-inner">
+                        <div class="photo-slideshow">
+                            <img src="firstpic/3/54.jpg" alt="Our photo" class="slide-img active">
+                            <video src="firstpic/3/9.mp4" class="slide-img" autoplay muted loop playsinline></video>
+                            <video src="firstpic/3/16.mp4" class="slide-img" autoplay muted loop playsinline></video>
+                            <video src="firstpic/3/24.mp4" class="slide-img" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
+                    <div class="frame-roses frame-roses-tl">🌹</div>
+                    <div class="frame-roses frame-roses-br">🌹</div>
+                </div>
+                <p class="frame-caption">"Our Adventure 🌹"</p>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 3: LOVE LETTER / FINALE ==================== -->
+    <section id="finale" class="section">
+        <div class="finale-bg"></div>
+        <div class="finale-content">
+            <div class="love-letter" id="love-letter">
+                <div class="letter-decoration letter-deco-top">✦ ✦ ✦</div>
+                <h2 class="finale-title">
+                    <span class="petal-text" data-hover="true">Happy Valentine's Day</span>
+                </h2>
+                <div class="finale-heart-divider">
+                    <span>♥</span>
+                </div>
+                <p class="finale-message primary-message">
+                    Thank you for being my everyday.
+                </p>
+                <p class="finale-message secondary-message">
+                    การมีเธออยู่ด้วยมันทำให้ชีวิตดีขึ้นเยอะเลย ,<br>
+                    รักเธอมากๆ นะ ทั้งตอนนี้และตลอดไป .
+                </p>
+                <div class="finale-signature">
+                    <span class="signature-line"></span>
+                    <span class="signature-text">Forever yours 💕</span>
+                    <span class="signature-line"></span>
+                </div>
+                <div class="letter-decoration letter-deco-bottom">✦ ✦ ✦</div>
+            </div>
+        </div>
+
+        <!-- Firework-like burst -->
+        <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+    </section>
+
+    <!-- ==================== SECTION 4: SURPRISE GIFT ==================== -->
+    <section id="surprise" class="section">
+        <div class="surprise-bg"></div>
+        <div class="surprise-content">
+            <p class="surprise-hint">แจ็คมีอะไรจะให้...</p>
+            <button id="surprise-btn" class="surprise-btn">
+                <span class="btn-icon">🎁</span>
+                <span class="btn-text">กดเปิดเลย</span>
+                <div class="btn-glow"></div>
+                <div class="btn-sparkle btn-sparkle-1">✦</div>
+                <div class="btn-sparkle btn-sparkle-2">✧</div>
+                <div class="btn-sparkle btn-sparkle-3">✦</div>
+                <div class="btn-sparkle btn-sparkle-4">✧</div>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== VTR MEDIA RAIN OVERLAY ==================== -->
+    <div id="vtr-overlay" class="vtr-overlay" aria-hidden="true">
+        <div class="vtr-rain-container" id="vtr-rain"></div>
+        <div class="vtr-title-wrap">
+            <p class="vtr-title">ทุกช่วงเวลาของเรา</p>
+            <div class="vtr-typewriter" id="vtr-typewriter">
+                <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+            </div>
+        </div>
+        <button id="vtr-close" class="vtr-close">✕</button>
+    </div>
+
+    <!-- Background Music Toggle -->
+    <button id="music-toggle" class="music-btn" aria-label="Toggle music">
+        <span class="music-icon">🎵</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
