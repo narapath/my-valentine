@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (isVideo(file)) {
                     const video = document.createElement('video');
-                    video.src = 'media/' + file;
+                    video.src = 'assets/media/' + file;
                     video.autoplay = true;
                     video.muted = true;
                     video.loop = true;
@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.appendChild(video);
                 } else {
                     const img = document.createElement('img');
-                    img.src = 'media/' + file;
+                    img.src = 'assets/media/' + file;
                     img.alt = 'Memory';
                     img.loading = 'lazy';
                     item.appendChild(img);
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Background music
-        const bgMusic = new Audio('mp3/1.mp3');
+        const bgMusic = new Audio('assets/audio/1.mp3');
         bgMusic.loop = false;
         bgMusic.volume = 0.5;
 
