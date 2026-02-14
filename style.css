@@ -1407,3 +1407,371 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+
+/* ============================================
+   SECTION: WEDDING
+   ============================================ */
+#wedding {
+    background: radial-gradient(ellipse at center, #2a0a1a 0%, #0d0208 100%);
+    padding: 100px 20px;
+    min-height: auto;
+}
+
+.wedding-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(212, 168, 67, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(196, 30, 58, 0.08) 0%, transparent 40%);
+}
+
+.wedding-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Override gallery-frame for wedding photo */
+.wedding-photo-frame {
+    opacity: 1 !important;
+    transform: none !important;
+    max-width: 380px;
+    width: 100%;
+}
+
+.wedding-photo-frame .frame-inner {
+    aspect-ratio: 3 / 4;
+}
+
+/* Wedding Image Hover Effect */
+.wedding-photo-frame .wedding-img-1,
+.wedding-photo-frame .wedding-img-2 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.8s ease;
+}
+
+.wedding-photo-frame .wedding-img-2 {
+    opacity: 0;
+}
+
+.wedding-photo-frame:hover .wedding-img-1 {
+    opacity: 0 !important;
+}
+
+.wedding-photo-frame:hover .wedding-img-2 {
+    opacity: 1 !important;
+}
+
+/* Countdown Wrapper */
+.wedding-countdown-wrapper {
+    text-align: center;
+}
+
+.wedding-countdown-label {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-style: italic;
+    color: var(--rose-blush);
+    opacity: 0.8;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+}
+
+/* Countdown Timer — Elegant Gold Text */
+.wedding-countdown {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    min-width: auto;
+}
+
+.countdown-item:hover {
+    transform: none;
+    background: transparent;
+}
+
+.countdown-number {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(212, 168, 67, 0.3);
+}
+
+.countdown-label {
+    font-family: var(--font-serif);
+    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.countdown-end {
+    font-family: var(--font-script);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(212, 168, 67, 0.4);
+}
+
+@media (min-width: 768px) {
+    .wedding-content {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .wedding-countdown {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .wedding-countdown {
+        gap: 1.5rem;
+    }
+
+    .wedding-photo-frame {
+        max-width: 280px;
+    }
+}
+
+/* ============================================
+   VENUE LINK & MAP POPUP
+   ============================================ */
+
+/* Venue Link in caption */
+.venue-link {
+    color: var(--gold-light);
+    text-decoration: none;
+    cursor: pointer;
+    font-style: italic;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    border-bottom: 1px dashed var(--gold);
+    padding-bottom: 1px;
+}
+
+.venue-link:hover {
+    color: var(--gold-shimmer);
+    text-shadow: 0 0 12px rgba(212, 168, 67, 0.6);
+    border-bottom-color: var(--gold-light);
+}
+
+.venue-pin {
+    display: inline-block;
+    animation: pinBounce 2s ease-in-out infinite;
+    font-style: normal;
+}
+
+@keyframes pinBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Map Popup Overlay */
+.map-popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(13, 2, 8, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    padding: 20px;
+}
+
+.map-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Popup Card */
+.map-popup-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(45, 0, 10, 0.95), rgba(26, 0, 5, 0.98));
+    border: 1.5px solid var(--gold);
+    border-radius: 24px;
+    max-width: 520px;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    box-shadow:
+        0 0 40px rgba(212, 168, 67, 0.2),
+        0 25px 80px rgba(0, 0, 0, 0.7),
+        inset 0 0 60px rgba(212, 168, 67, 0.03);
+    transform: scale(0.85) translateY(30px);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.map-popup-overlay.active .map-popup-card {
+    transform: scale(1) translateY(0);
+}
+
+/* Close Button */
+.map-popup-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--cream);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.map-popup-close:hover {
+    background: rgba(196, 30, 58, 0.4);
+    border-color: var(--rose-primary);
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* Header */
+.map-popup-header {
+    text-align: center;
+    padding: 28px 24px 18px;
+    background: linear-gradient(180deg, rgba(212, 168, 67, 0.08) 0%, transparent 100%);
+}
+
+.map-popup-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 8px;
+    animation: pinBounce 2s ease-in-out infinite;
+}
+
+.map-popup-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(212, 168, 67, 0.3);
+    margin: 0;
+}
+
+.map-popup-subtitle {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--rose-blush);
+    opacity: 0.8;
+    letter-spacing: 0.05em;
+    margin: 4px 0 0;
+}
+
+/* Map Body */
+.map-popup-body {
+    padding: 0 20px;
+}
+
+.map-popup-iframe {
+    width: 100%;
+    height: 280px;
+    border: none;
+    border-radius: 14px;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(212, 168, 67, 0.15);
+}
+
+/* Navigate Button */
+.map-popup-navigate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 20px 24px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--gold), #B8860B);
+    color: #1A0005;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 4px 15px rgba(212, 168, 67, 0.4),
+        0 0 30px rgba(212, 168, 67, 0.15);
+}
+
+.map-popup-navigate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 25px rgba(212, 168, 67, 0.5),
+        0 0 50px rgba(212, 168, 67, 0.25);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+
+.map-popup-navigate-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    .map-popup-card {
+        border-radius: 18px;
+    }
+
+    .map-popup-iframe {
+        height: 220px;
+    }
+
+    .map-popup-header {
+        padding: 22px 16px 14px;
+    }
+
+    .map-popup-title {
+        font-size: 1.3rem;
+    }
+
+    .map-popup-navigate-btn {
+        margin: 16px 16px 20px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}

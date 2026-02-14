@@ -374,18 +374,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- VTR Media Rain ---
     // ★★★ รูปและวิดีโอทั้งหมดในโฟลเดอร์ media/ ★★★
     const MEDIA_FILES = [
-        '1.mp4', '2.mp4', '3.mp4', '4.mp4', '5.jpg',
-        '6.jpg', '7.jpg', '8.mp4', '9.mp4', '10.mp4',
-        '11.mp4', '12.mp4', '13.mp4', '15.jpg', '16.mp4',
-        '18.mp4', '19.mp4', '20.mp4', '21.mp4', '22.mp4',
-        '23.mp4', '24.mp4', '25.mp4', '26.mp4', '27.mp4',
-        '28.jpg', '29.mp4', '30.mp4', '31.mp4', '33.mp4',
-        '34.jpg', '35.mp4', '36.mp4', '37.mp4', '38.mp4',
-        '39.mp4', '40.mp4', '41.mp4', '42.jpg', '42.mp4',
-        '43.jpg', '43.mp4', '44.jpg', '44.mp4',
-        '45.jpg', '46.jpg', '47.jpg', '48.jpg', '49.jpg',
-        '50.jpg', '51.jpg', '52.jpg', '53.jpg', '54.jpg',
-        '55.jpg', '56.jpg', '57.jpg', '58.jpg',
+        '1.mp4', '10.mp4', '100.jpg', '101.jpg', '102.jpg', '103.jpg', '104.jpg', '105.jpg', '106.jpg', '107.jpg',
+        '108.jpg', '109.jpg', '11.mp4', '110.jpg', '111.jpg', '112.mp4', '113.mp4', '114.mp4', '116.mp4', '117.mp4',
+        '118.jpg', '119.jpg', '12.mp4', '120.jpg', '13.mp4', '15.jpg', '16.mp4', '18.mp4', '19.mp4', '2.mp4',
+        '20.mp4', '21.mp4', '22.mp4', '23.mp4', '24.mp4', '25.mp4', '26.mp4', '27.mp4', '28.jpg', '29.mp4',
+        '3.mp4', '30.mp4', '31.mp4', '33.mp4', '34.jpg', '35.mp4', '36.mp4', '37.mp4', '38.mp4', '39.mp4',
+        '4.mp4', '40.mp4', '41.mp4', '42.jpg', '42.mp4', '43.jpg', '43.mp4', '44.jpg', '44.mp4', '45.jpg',
+        '45.mp4', '46.jpg', '46.mp4', '47.jpg', '47.mp4', '48.jpg', '48.mp4', '49.jpg', '49.mp4', '5.jpg',
+        '50.jpg', '50.mp4', '51.jpg', '51.mp4', '52.jpg', '52.mp4', '53.jpg', '53.mp4', '54.jpg', '54.mp4',
+        '55.jpg', '55.mp4', '56.jpg', '56.mp4', '57.jpg', '57.mp4', '58.jpg', '58.mp4', '59.mp4', '6.jpg',
+        '60.mp4', '61.mp4', '62.mp4', '63.mp4', '64.mp4', '65.mp4', '66.mp4', '67.mp4', '68.mp4', '69.mp4',
+        '7.jpg', '70.mp4', '71.mp4', '72.mp4', '73.mp4', '74.mp4', '75.mp4', '76.mp4', '77.mp4', '78.mp4',
+        '79.mp4', '8.mp4', '80.jpg', '80.mp4', '81.jpg', '82.jpg', '83.jpg', '84.jpg', '85.jpg', '86.jpg',
+        '87.jpg', '88.jpg', '89.jpg', '9.mp4', '90.jpg', '91.jpg', '92.jpg', '93.jpg', '94.jpg', '95.jpg',
+        '96.jpg', '97.jpg', '98.jpg', '99.jpg'
     ];
 
     function initVTRMediaRain() {
@@ -635,6 +637,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Wedding Countdown (Target: 26/12/2026) ---
+    function initWeddingCountdown() {
+        const weddingDate = new Date(2026, 11, 26, 0, 0, 0); // Dec is 11
+        const timerEl = document.getElementById('wedding-countdown');
+        if (!timerEl) return;
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            if (diff <= 0) {
+                timerEl.innerHTML = '<div class="countdown-end">Today is our Big Day! 💍</div>';
+                return;
+            }
+
+            // Calculate years, months, days, hours, mins, secs
+            let years = weddingDate.getFullYear() - now.getFullYear();
+            let months = weddingDate.getMonth() - now.getMonth();
+            let days = weddingDate.getDate() - now.getDate();
+            let hours = weddingDate.getHours() - now.getHours();
+            let minutes = weddingDate.getMinutes() - now.getMinutes();
+            let seconds = weddingDate.getSeconds() - now.getSeconds();
+
+            if (seconds < 0) { seconds += 60; minutes--; }
+            if (minutes < 0) { minutes += 60; hours--; }
+            if (hours < 0) { hours += 24; days--; }
+            if (days < 0) {
+                const prevMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+                days += prevMonth.getDate();
+                months--;
+            }
+            if (months < 0) { months += 12; years--; }
+
+            timerEl.innerHTML = `
+                <div class="countdown-item">
+                    <span class="countdown-number">${years}</span>
+                    <span class="countdown-label">Years</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${months}</span>
+                    <span class="countdown-label">Months</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${days}</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${hours}</span>
+                    <span class="countdown-label">Hrs</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${minutes}</span>
+                    <span class="countdown-label">Mins</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number">${seconds}</span>
+                    <span class="countdown-label">Secs</span>
+                </div>
+            `;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    }
+
     // --- Init all animations ---
     function initAnimations() {
         createPetals();
@@ -647,6 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initRelationshipTimer();
         initPhotoSlideshows();
         initVTRMediaRain();
+        initWeddingCountdown();
 
         // --- Splash Screen → Start Music Immediately ---
         const splash = document.getElementById('splash-screen');
@@ -666,6 +734,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     splash.style.display = 'none';
                 }, 800);
             });
+        }
+    }
+});
+
+// --- Map Popup Open/Close (Global scope for inline onclick) ---
+function openMapPopup() {
+    const popup = document.getElementById('map-popup');
+    if (popup) {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMapPopup() {
+    const popup = document.getElementById('map-popup');
+    if (popup) {
+        popup.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const popup = document.getElementById('map-popup');
+        if (popup && popup.classList.contains('active')) {
+            closeMapPopup();
         }
     }
 });
